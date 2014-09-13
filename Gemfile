@@ -33,4 +33,4 @@ group :development, :test do
   gem 'poltergeist'
 end
 
-ruby "2.1.2p95"
+ruby "2.1.2"
