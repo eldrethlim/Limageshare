@@ -15,7 +15,7 @@
     <%= link_to "Didn't receive confirmation instructions?", new_user_confirmation_path %><br />
   <% end %>
 
-  <%= if !(current_page?('/users/unlock/new') %>
+  <% if !(current_page?('/users/unlock/new')) %>
     <%= link_to "Didn't receieve unlock instructions?", new_user_unlock_path %><br />
   <% end %>
 
