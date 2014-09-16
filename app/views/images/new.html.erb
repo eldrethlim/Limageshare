@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h1>Share new image</h1>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>Guidelines for sharing an image</p>
+      <ul>
+        <li>Please make sure there's an image to share!</li>
+        <li>Please add a description for your image!</li>
+        <li>Please keep it family and children friendly!</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <%= render partial: 'form', locals: { image: @image } %>
+    </div>
+  </div>
+</div>

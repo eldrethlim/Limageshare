@@ -1,0 +1,41 @@
+<div class="container">
+  <%= form_for image do |f| %>
+
+    <% if image.errors.any? %>
+      <div class="alert alert-danger">
+        <h4> There are <%= pluralize(image.errors.count, "error") %>.</h4>
+        <ul>
+          <% image.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <% if image.image != nil %>
+      <div class="spacing">
+        <p><b> Current Image </b></p>
+        <%= image_tag image.image %>
+      </div>
+    <% end %>
+
+    <div class="form-group doublespacing">
+      <%= f.label "Image" %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div>
+
+    <div class="row">
+      <div class="col-md-8">
+        <div class="form-group">
+          <%= f.label "Description" %>
+          <%= f.text_area :description, rows: 4, class: 'form-control', placeholder: "Enter your image's description here" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Share image", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
