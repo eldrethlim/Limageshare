@@ -18,6 +18,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'will_paginate'
 
 group :development do
   gem 'sqlite3'

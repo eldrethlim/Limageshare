@@ -1,0 +1,37 @@
+<div class="container">
+
+  <%= render 'pages/home' unless user_signed_in? %>
+
+  <% if @user != nil %>
+    <div class="spacing">
+      <h3>Currently displaying images from <%= @user.username %></h3>
+    </div>
+  <% end %>
+  
+  <div class="doublespacing transitions-enabled">
+    <% images.each do |image| %>
+      <div class="box panel panel-default">
+        <%= link_to image_tag(image.image.thumb.url), image %>
+        <div class="panel-body">
+          <p><%= image.description %></p>
+            <p>Posted by: <strong><%= link_to image.user.username, show_images_user_path(image.user) %></strong></p>
+
+          <% if current_user && image.user == current_user %>
+            <div class="actions">
+              <%= link_to edit_image_path(image) do %>
+                <data-toggle="tooltip" data-placement="bottom" title="Edit image"><span class="glyphicon glyphicon-edit">
+              <% end %>
+              <%= link_to image, method: :delete, data: {confirm: 'Are you sure you want to delete this image?'} do %>
+                <data-toggle="tooltip" data-placement="bottom" title="Delete image"><span class="glyphicon glyphicon-trash"></span>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="center">
+    <%= will_paginate @images %>
+  </div>
+</div>

@@ -15,7 +15,7 @@
     <% if image.image != nil %>
       <div class="spacing">
         <p><b> Current Image </b></p>
-        <%= image_tag image.image %>
+        <%= image_tag image.image.thumb.url %>
       </div>
     <% end %>
 

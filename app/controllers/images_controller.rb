@@ -4,10 +4,14 @@ class ImagesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @images = Image.all.order("created_at DESC").paginate(page: params[:page], per_page: 50)
+    @images = Image.order("created_at DESC").paginate(page: params[:page], per_page: 50)
   end
 
   def show
+  end
+
+  def show_user_images
+    @images = current_user.images.all
   end
 
   def new
