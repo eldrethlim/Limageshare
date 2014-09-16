@@ -3,4 +3,4 @@
 This is a public image sharing website where public can view images but require
 an account to upload them.
 
-Live app here: limageshare.herokuapps.com
+Live app here: [Limageshare](limageshare.herokuapps.com)
