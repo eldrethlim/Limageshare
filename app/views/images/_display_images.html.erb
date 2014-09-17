@@ -8,7 +8,7 @@
     </div>
   <% end %>
   
-  <div class="doublespacing transitions-enabled">
+  <div id="images" class="doublespacing transitions-enabled">
     <% images.each do |image| %>
       <div class="box panel panel-default">
         <%= link_to image_tag(image.image.thumb.url), image %>

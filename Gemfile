@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'will_paginate'
 gem 'fog'
+gem 'masonry-rails'
+gem 'jquery-turbolinks'
 
 group :development do
   gem 'sqlite3'
