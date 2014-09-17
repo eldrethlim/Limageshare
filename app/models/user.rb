@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :images
+  has_many :images, dependent: :destroy
   validates_uniqueness_of :username, :email
   validates :username, presence: true
   # Include default devise modules. Others available are:
