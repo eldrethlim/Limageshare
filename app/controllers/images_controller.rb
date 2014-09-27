@@ -8,10 +8,12 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @comment = @image.comments.build
+    @comments = @image.comments.all
   end
 
   def show_user_images
-    @images = current_user.images.all
+    @images = current_user.images.order("created_at DESC").all
   end
 
   def new

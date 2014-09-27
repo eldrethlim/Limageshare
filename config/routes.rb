@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :images
+  resources :images do
+    resources :comments, except: [:index]
+  end
   resources :users do
     member do
       get 'show_images'
