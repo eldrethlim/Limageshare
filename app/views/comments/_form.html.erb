@@ -1,5 +1,5 @@
 <div id="form_comments_container">
-  <%= form_for [image, comment] do |f| %>
+  <%= form_for [image, comment], remote: true do |f| %>
     
     <div class="form-group">
       <%= f.text_field :body, class: 'form-control', placeholder: "Enter comment here" %>

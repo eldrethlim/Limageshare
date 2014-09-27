@@ -1,0 +1,6 @@
+<% if @comment.valid? %>
+  $('#comments_list').prepend("<%= escape_javascript(render(partial: '/comments/comment', locals: { comment: @comment })) %>");
+  $('#flash_messages').html("<%= escape_javascript(render(partial: '/layouts/flash')) %>");
+<% else %>
+  $('#flash_messages').html("<%= escape_javascript(render(partial: 'layouts/flash')) %>");
+<% end %>

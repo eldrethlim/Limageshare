@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
+  respond_to :html, :js
 
   def new
     @comment = Comment.new
@@ -12,10 +13,15 @@ class CommentsController < ApplicationController
     @comment = @image.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
-      flash[:notice] = "You've commented on this image."
-      redirect_to [@image]
+      flash.clear
+      flash[:notice] = "You commented on this image."
     else
+      flash.clear
       flash[:error] = "Uh oh.. something went wrong."
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to [@image, @comment] }
     end
   end
 
@@ -39,7 +45,9 @@ class CommentsController < ApplicationController
       flash[:error] = "Uh oh.. something went wrong."
     end
     
-    redirect_to [@image]
+    respond_with(@comment) do |f|
+      f.html { redirect_to @image }
+    end
   end
 
   private

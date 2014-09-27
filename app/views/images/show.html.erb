@@ -33,7 +33,7 @@
           <% end %>
         </div>
 
-        <div class="comments_list doublespacing">
+        <div id="comments_list" class="doublespacing">
           <% @comments.each do |comment| %>
             <%= render partial: 'comments/comment', locals: {comment: comment} %>
           <% end %>
