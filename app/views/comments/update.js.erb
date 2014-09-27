@@ -1,0 +1,9 @@
+<% if @comment.valid? %>
+  $('#edit_form_comments_container').remove();
+  $('#edit_comment_<%=@comment.id%>_link').show();
+
+  $('#comment_<%=@comment.id%>').replaceWith("<%= escape_javascript(render(partial: '/comments/comment', locals: { comment: @comment })) %>");
+  $('#flash_messages').html("<%= escape_javascript(render(partial: 'layouts/flash')) %>");
+<% else %>
+  $('#flash_messages').html("<%= escape_javascript(render(partial: 'layouts/flash')) %>");
+<% end %>

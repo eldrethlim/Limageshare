@@ -1,0 +1,7 @@
+$('#edit_comment_<%= @comment.id %>_link').hide().after("<%= escape_javascript(render(partial: '/comments/edit_form', locals: { image: @image, comment: @comment })) %>");
+
+$('#cancel_edit').on('click', function(event) {
+  $('#edit_comment_<%=@comment.id%>_link').show();
+  $('#edit_form_comments_container').remove();
+  event.preventDefault();
+});

@@ -29,7 +29,7 @@
         <b><u><h4 class="center">Comments</h5></b></u>
         <div class="new_comment doublespacing">
           <% if user_signed_in? %>
-            <%= render partial: 'comments/form', locals: {image: @image, comment: @comment } %>
+            <%= render partial: 'comments/new_form', locals: {image: @image, comment: @comment } %>
           <% end %>
         </div>
 

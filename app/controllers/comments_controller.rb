@@ -29,19 +29,25 @@ class CommentsController < ApplicationController
   end
 
   def update
-    if @comment.save
+    if @comment.update_attributes(comment_params)
+      flash.clear
       flash[:notice] = "Comment updated."
-      redirect_to [@image]
     else
+      flash.clear
       flash[:error] = "Uh oh.. something went wrong."
-      render :edit
+    end
+
+    respond_with(@comment) do |f|
+      f.html { redirect_to @image }
     end
   end
 
   def destroy
     if @comment.destroy
+      flash.clear
       flash[:alert] = "Comment deleted."
     else
+      flash.clear
       flash[:error] = "Uh oh.. something went wrong."
     end
     
