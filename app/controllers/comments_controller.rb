@@ -4,11 +4,7 @@ class CommentsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
   respond_to :html, :js
-
-  def new
-    @comment = Comment.new
-  end
-
+  
   def create
     @comment = @image.comments.build(comment_params)
     @comment.user = current_user

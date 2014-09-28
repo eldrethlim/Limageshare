@@ -4,11 +4,7 @@ class FavouritesController < ApplicationController
   before_action :correct_user, only: [:destroy]
   before_action :authenticate_user!
   respond_to :html, :js
-
-  def new
-    @favourite = Favourite.new
-  end
-
+  
   def create
     @favourite = @image.favourites.build(favourite_params)
     @favourite.user = current_user
