@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :images do
+    resources :favourites, except: [:index]
     resources :comments, except: [:index]
   end
   resources :users do

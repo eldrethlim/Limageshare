@@ -6,8 +6,15 @@
           <%= image_tag @image.image.url %>
         </div>
         <div class="panel-body">
-          <p><%= @image.description %></p>
-          <p><strong><%= link_to @image.user.username, show_images_user_path(@image.user) %></strong></p>
+          <% if @favourite == nil %>
+            <%= render partial: 'favourites/favourite', locals: {image: @image, favourite: @favourite } %>
+          <% else %>
+            <%= render partial: 'favourites/unfavourite', locals: {image: @image, favourite: @favourite} %>
+          <% end %>
+          <div class="spacing">
+            <p><%= @image.description %></p>
+            <p><strong><%= link_to @image.user.username, show_images_user_path(@image.user) %></strong></p>
+          </div>
 
           <% if current_user && @image.user == current_user %>
             <%= link_to edit_image_path(@image) do %>

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :favourites
   has_many :images, dependent: :destroy
   has_many :comments, dependent: :destroy
   validates_uniqueness_of :username, :email

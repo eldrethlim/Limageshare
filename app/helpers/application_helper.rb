@@ -5,4 +5,8 @@ module ApplicationHelper
     [image, comment]
   end
 
+  def favourite_url_helper(favourite)
+    image = favourite.image
+    [image, favourite]
+  end
 end

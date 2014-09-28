@@ -1,0 +1,10 @@
+<div id="favouriter">
+  <%= form_for [image, Favourite.new] do |f| %>
+    <%= f.hidden_field :image_id, value: image.id %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="form-group">
+      <%= f.submit "Favourite", class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>
