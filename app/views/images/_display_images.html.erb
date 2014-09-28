@@ -4,7 +4,11 @@
 
   <% if @user != nil %>
     <div class="spacing">
-      <h3>Currently displaying images from <%= @user.username %></h3>
+      <% if @user == current_user %>
+        <h3>Currently displaying my uploaded images </h3>
+      <% else %>
+        <h3>Currently displaying images from <%= @user.username %></h3>
+      <% end %>
     </div>
   <% end %>
   
