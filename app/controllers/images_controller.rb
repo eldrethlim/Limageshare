@@ -8,7 +8,9 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @favourite = @image.favourites.find_by(user_id: current_user.id)
+    if current_user
+      @favourite = @image.favourites.find_by(user_id: current_user.id)
+    end
     @comment = @image.comments.build
     @comments = @image.comments.all
   end

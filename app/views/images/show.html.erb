@@ -6,11 +6,18 @@
           <%= image_tag @image.image.url %>
         </div>
         <div class="panel-body">
-          <% if @favourite == nil %>
-            <%= render partial: 'favourites/favourite', locals: {image: @image, favourite: @favourite } %>
-          <% else %>
-            <%= render partial: 'favourites/unfavourite', locals: {image: @image, favourite: @favourite} %>
-          <% end %>
+          <div id="favourite_counter"%>
+            <%= render partial: 'images/favourite_counter' %>
+          </div>
+          <div id="favouriting_body" class="spacing">
+            <% if current_user %>
+              <% if @favourite == nil %>
+                <%= render partial: 'favourites/favourite', locals: {image: @image, favourite: @favourite } %>
+              <% else %>
+                <%= render partial: 'favourites/unfavourite', locals: {image: @image, favourite: @favourite} %>
+              <% end %>
+            <% end %>
+          </div>
           <div class="spacing">
             <p><%= @image.description %></p>
             <p><strong><%= link_to @image.user.username, show_images_user_path(@image.user) %></strong></p>
@@ -46,6 +53,7 @@
           <% end %>
         </div>
       </div>
+
     </div>
   </div>
 </div>

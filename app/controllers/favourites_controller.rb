@@ -9,6 +9,7 @@ class FavouritesController < ApplicationController
     @favourite = @image.favourites.build(favourite_params)
     @favourite.user = current_user
     if @favourite.save
+      @image.reload
       flash.clear
       flash[:notice] = "Favourited this image!"
     else
@@ -23,6 +24,7 @@ class FavouritesController < ApplicationController
 
   def destroy
     if @favourite.destroy
+      @image.reload
       flash.clear
       flash[:alert] = "Unfavourited this image!"
     else

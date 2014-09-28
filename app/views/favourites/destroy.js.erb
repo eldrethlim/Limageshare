@@ -1,2 +1,3 @@
+$('#favourite_counter').replaceWith("<%= escape_javascript(render(partial: '/images/favourite_counter')) %>");
 $('#unfavouriter').replaceWith("<%= escape_javascript(render(partial: '/favourites/favourite', locals: { image: @image, favourite: @favourite })) %>");
 $('#flash_messages').html("<%= escape_javascript(render(partial: 'layouts/flash')) %>");
