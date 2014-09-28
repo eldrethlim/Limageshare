@@ -1,1 +1,3 @@
-<%= link_to "Unfavourite", favourite_url_helper(favourite), method: :delete, class: 'btn btn-danger' %>
+<div id="unfavouriter">
+  <%= link_to "Unfavourite", favourite_url_helper(favourite), method: :delete, remote: true, class: 'btn btn-danger' %>
+</div>

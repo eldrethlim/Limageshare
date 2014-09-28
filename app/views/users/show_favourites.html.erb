@@ -2,14 +2,13 @@
 
   <%= render 'pages/home' unless user_signed_in? %>
 
-  <% if @user != nil %>
     <div class="spacing">
-      <h3>Currently displaying images from <%= @user.username %></h3>
+      <h3>Currently displaying my favourited images</h3>
     </div>
-  <% end %>
   
   <div id="images" class="doublespacing transitions-enabled">
-    <% images.each do |image| %>
+    <% for x in 0..@favourites.length-1 do %>
+      <% image = @favourites[x].image %>
       <div class="box panel panel-default">
         <%= link_to image_tag(image.image.thumb.url), image %>
         <div class="panel-body">
@@ -33,6 +32,6 @@
   </div>
 
   <div class="center">
-    <%= will_paginate @images %>
+    <%= will_paginate @favourites %>
   </div>
 </div>

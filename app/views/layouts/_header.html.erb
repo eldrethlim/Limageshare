@@ -14,7 +14,9 @@
       <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "About", about_path %></li>
         <% if user_signed_in? %>
-          <li><%= link_to "Share a new image", new_image_path %></li>
+          <li><%= link_to "Share an image", new_image_path %></li>
+          <li><%= link_to "Favourites", show_favourites_user_path(current_user) %></li>
+          <li><%= link_to "My Images", show_images_user_path(current_user) %>
           <li><%= link_to "Account settings", edit_user_registration_path %></li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
         <% else %>

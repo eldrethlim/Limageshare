@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show_images]
+  before_action :set_user, only: [:show_images, :show_favourites]
   before_filter :authenticate_user!, except: [:show_images]
 
   def show_images
     @images = @user.images.all.order("created_at DESC").paginate(page: params[:page], per_page: 50)
+  end
+
+  def show_favourites
+    @favourites = @user.favourites.all.order("created_at DESC").paginate(page: params[:page], per_page: 50)
   end
 
   def update

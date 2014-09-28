@@ -4,7 +4,7 @@ class FavouritesController < ApplicationController
   before_action :correct_user, only: [:destroy]
   before_action :authenticate_user!
   respond_to :html, :js
-  
+
   def create
     @favourite = @image.favourites.build(favourite_params)
     @favourite.user = current_user
@@ -16,19 +16,23 @@ class FavouritesController < ApplicationController
       flash[:error] = "Uh oh, something went wrong!"
     end
 
-    redirect_to :back
+    respond_with(@favourite) do |f|
+      f.html { redirect_to @image }
+    end
   end
 
   def destroy
     if @favourite.destroy
       flash.clear
-      flash[:notice] = "Unfavourited this image!"
+      flash[:alert] = "Unfavourited this image!"
     else
       flash.clear
       flash[:error] = "Uh oh, something went wrong!"
     end
 
-    redirect_to :back
+    respond_with(@favourite) do |f|
+      f.html { redirect_to @image }
+    end
   end
 
   private

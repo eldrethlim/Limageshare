@@ -1,0 +1,6 @@
+<% if @favourite.valid? %>
+  $('#favouriter').replaceWith("<%= escape_javascript(render(partial: '/favourites/unfavourite', locals: { image: @image, favourite: @favourite })) %>");
+  $('#flash_messages').html("<%= escape_javascript(render(partial: '/layouts/flash')) %>");
+<% else %>
+  $('#flash_messages').html("<%= escape_javascript(render(partial: 'layouts/flash')) %>");
+<% end %>

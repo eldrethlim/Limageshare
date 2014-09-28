@@ -1,5 +1,5 @@
 <div id="favouriter">
-  <%= form_for [image, Favourite.new] do |f| %>
+  <%= form_for [image, Favourite.new], remote: true do |f| %>
     <%= f.hidden_field :image_id, value: image.id %>
     <%= f.hidden_field :user_id, value: current_user.id %>
 
