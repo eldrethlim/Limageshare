@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   end
 
   root 'images#index'
-
   get 'about' => 'pages#about'
 end
