@@ -1,0 +1,37 @@
+<div class="container">
+
+  <%= render 'pages/home' unless user_signed_in? %>
+
+  <% if @user != nil %>
+    <div class="spacing">
+      <% if @user == current_user && favourite_list == false %>
+        <h3>Currently displaying my uploaded images </h3>
+      <% elsif favourite_list %>
+        <H3>Currently displaying my favourited images <h3>
+      <% else %>
+        <h3>Currently displaying images from <%= @user.username %></h3>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <div id="images" class="doublespacing transitions-enabled">
+    <% if favourite_list %>
+      <% for x in 0..@favourites.length-1 do %>
+        <% image = @favourites[x].image %>
+        <%= render partial: 'images/render_images', locals: {image: image} %>
+      <% end %>
+    <% else %>
+      <% images.each do |image| %>
+      <%= render partial: 'images/render_images', locals: {image: image} %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="center">
+    <% if favourite_list %>
+      <%= will_paginate favourites %>
+    <% else %>
+      <%= will_paginate images %>
+    <% end %>
+  </div>
+</div>

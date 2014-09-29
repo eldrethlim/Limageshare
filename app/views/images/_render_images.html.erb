@@ -1,0 +1,19 @@
+  <div class="box panel panel-default">
+    <%= link_to image_tag(image.image.thumb.url), image %>
+    <div class="panel-body">
+      <p><%= link_to image.description, image %></p>
+        <p>Posted by: <strong><%= link_to image.user.username, show_images_user_path(image.user) %></strong></p>
+        <p class="small"><%= pluralize(image.comments_count, "comment") %>, favourited <%= pluralize(image.favourites_count, "time") %> </p>
+
+      <% if current_user && image.user == current_user %>
+        <div class="actions">
+          <%= link_to edit_image_path(image) do %>
+            <data-toggle="tooltip" data-placement="bottom" title="Edit image"><span class="glyphicon glyphicon-edit">
+          <% end %>
+          <%= link_to image, method: :delete, data: {confirm: 'Are you sure you want to delete this image?'} do %>
+            <data-toggle="tooltip" data-placement="bottom" title="Delete image"><span class="glyphicon glyphicon-trash"></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
